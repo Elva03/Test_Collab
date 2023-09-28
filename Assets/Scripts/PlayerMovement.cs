@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 using UnityEngine.Serialization;
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,18 +29,18 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Components")]
     private Rigidbody2D _rigidbody2D;
-    private InputManager _input;
-    private PlayerAnimator _animation;
-    private AudioSource _audioSource;
+    private PlayerInput _input;
+    //private PlayerAnimator _animation;
+    //private AudioSource _audioSource;
     
     
     // Start is called before the first frame update
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _input = GetComponent<InputManager>();
-        _animation = GetComponent<PlayerAnimation>();
-        _audioSource = GetComponent<AudioSource>();
+        _input = GetComponent<PlayerInput>();
+        //_animation = GetComponent<PlayerAnimation>();
+        //_audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _desiredVelocity = _rigidbody2D.velocity;
 
-        _animation.UpdateAnimation(_desiredVelocity, IsPlayerGrounded(), _input.moveDirection);
+        //_animation.UpdateAnimation(_desiredVelocity, IsPlayerGrounded(), _input.moveDirection);
 
         if (IsPlayerGrounded())
         { coyoteTimeCounter = coyoteTime; }
